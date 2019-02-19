@@ -1,52 +1,46 @@
-function deleteItem(e){
 
-}
 
-function getPriceByProduct(itemNode){
+window.onload = function () {
 
-}
+  var btn = document.getElementById("calc-price");
 
-function updatePriceByProduct(productPrice, index){
+  btn.addEventListener("click", function () {
+    var price = document.getElementsByClassName("product-price");
+    var qty = document.getElementsByClassName("input-field");
 
-}
+    var total = 0;
+    for (i = 0; i < price.length; i++) {
+      total = parseInt(price[i].innerHTML) * qty[i].value;
+      (document.getElementsByClassName("total-product-price"))[i].innerHTML = total;
+    }
 
-function getTotalPrice() {
+    var value = document.getElementsByClassName("total-product-price");
+    currentValue = 0;
+    for (j = 0; j < value.length; j++) {
+      currentValue += parseInt(value[j].innerHTML);
+    }
+    document.getElementById("total-value").innerHTML = currentValue;
 
-}
+  });
 
-function createQuantityInput(){
+  deleteProduct();
 
-}
+  function deleteProduct() {
 
-function createDeleteButton(){
+    let btnDelete = document.getElementsByClassName("btn-delete");
+    let wrapperDelete = document.getElementsByClassName("wrapper");
 
-}
 
-function createQuantityNode(){
+    for (let k = 0; k < wrapperDelete.length; k++) {
+      btnDelete[k].addEventListener("click", function () {
 
-}
+        console.log(k + " wrapper " + wrapperDelete[k]);
 
-function createItemNode(dataType, itemData){
+        wrapperDelete[k].parentNode.removeChild(wrapperDelete[k]);
 
-}
+        deleteProduct();
+      })
+    }
+  };
 
-function createNewItemRow(itemName, itemUnitPrice){
-
-}
-
-function createNewItem(){
-
-}
-
-window.onload = function(){
-  var calculatePriceButton = document.getElementById('calc-prices-button');
-  var createItemButton = document.getElementById('new-item-create');
-  var deleteButtons = document.getElementsByClassName('btn-delete');
-
-  calculatePriceButton.onclick = getTotalPrice;
-  createItemButton.onclick = createNewItem;
-
-  for(var i = 0; i<deleteButtons.length ; i++){
-    deleteButtons[i].onclick = deleteItem;
-  }
 };
